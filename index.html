@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Money Tracker Multi-User</title>
+    <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+  <div id="login-screen">
+    <h2>Login</h2>
+    <input type="text" id="login-username" placeholder="Username" autocomplete="off" />
+    <input type="password" id="login-password" placeholder="Password" autocomplete="off" />
+    <br />
+    <button onclick="login()">Log In</button>
+    <p id="login-error" style="color:red; margin-top: 0.5rem;"></p>
+  </div>
+
+  <div id="app-content">
+    <header>
+      <h1>Mabunda Payment Tracker</h1>
+    </header>
+
+    <div class="top-bar">
+      <div>
+        Logged in as: <strong id="current-user">--</strong>
+      </div>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="navbar">
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="container">
+      <div class="summary">
+        <div>Total Money: R<span id="money-count">0</span></div>
+        <div>Total People Paid: <span id="people-count">0</span></div>
+      </div>
+
+      <div>
+        <input type="text" id="customer-name" placeholder="Customer Name" />
+        <input type="number" id="amount" placeholder="Amount Paid" />
+        <button onclick="addPayment()">Add Payment</button>
+        <button onclick="clearPayments()" style="background-color: #e74c3c">Clear All</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="payment-table"></tbody>
+      </table>
+
+      <div class="calendar">
+        <h2>Calendar</h2>
+        <input type="date" />
+      </div>
+
+      <div>
+        <h2>Daily/Weekly Payment Trend</h2>
+        <div class="filter-controls">
+          <label for="filter-date-start">Start Date:</label>
+          <input type="date" id="filter-date-start" />
+          <label for="filter-date-end">End Date:</label>
+          <input type="date" id="filter-date-end" />
+          <button onclick="applyDateFilter()">Apply Filter</button>
+        </div>
+        <canvas id="trendChart" width="400" height="200"></canvas>
+      </div>
+
+      <div id="about">
+        <h2>About</h2>
+        <p>This tool helps you track customer payments and transactions with ease. It's great for freelancers, small business owners, and anyone managing cash flow.</p>
+      </div>
+
+      <div id="contact">
+        <h2>Contact</h2>
+        <p>Need help? Reach out at <a href="mailto:team20753@gmail.com">support team@gmail.com</a>.</p>
+      </div>
+    </div>
+
+    <footer>&copy; 2025 Money Tracker</footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
